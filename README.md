@@ -1,157 +1,92 @@
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square)](LICENSE)
-
-DeviceHive Java server
-======================
-
-[DeviceHive]: http://devicehive.com "DeviceHive framework"
-[DataArt]: http://dataart.com "DataArt"
-
-DeviceHive turns any connected device into the part of Internet of Things.
-It provides the communication layer, control software and multi-platform
-libraries to bootstrap development of smart energy, home automation, remote
-sensing, telemetry, remote control and monitoring software and much more.
-
-Connect embedded Linux using Python, Node.js or Java libraries and JSON format.
-Write and read your data via REST, Websockets or MQTT, explore visualization on [Grafana](https://grafana.com/plugins/devicehive-devicehive-datasource/installation) charts.
-
-Develop client applications using HTML5/JavaScript and Android libraries.
-Leave communications to DeviceHive and focus on actual product and innovation.
-
-DeviceHive license
-------------------
-
-[DeviceHive] is developed by [DataArt] Apps and distributed under Open Source
-[Apache 2.0](https://en.wikipedia.org/wiki/Apache_License). This basically means
-you can do whatever you want with the software as long as the copyright notice
-is included. This also means you don't have to contribute the end product or
-modified sources back to Open Source, but if you feel like sharing, you are
-highly encouraged to do so!
-
-&copy; Copyright 2013-2017 DataArt Apps &copy; All Rights Reserved
-
-Docker Container
-=========================================
-DeviceHive could be deployed manually, via Docker Compose or to Kubernetes cluster.
-Our suggestion is to start from [Docker Compose](https://docs.docker.com/compose/) - the easiest way to start your 
-mastering DeviceHive capabilities. Instructions could be found [here](https://github.com/devicehive/devicehive-docker/tree/master/rdbms-image).
-In case you're more familiar with [Kubernetes](https://kubernetes.io/), please follow this 
-[link](https://github.com/devicehive/devicehive-docker/tree/master/k8s) for detailed instructions. 
-
-DeviceHive Java installation instructions
-=========================================
-
-Though docker-compose installation is the most developer-friendly way of running DeviceHive locally, sometimes it's required
-to build and start project manually. Below you can find detailed instructions on that.
-
-Prerequisites
--------------
-In order to use DeviceHive framework you must have the following components installed and configured:
-* [PostgreSQL 14](http://www.postgresql.org/download/) or above.
-* [Apache Kafka 3.1](http://kafka.apache.org/downloads.html) or above.
-* [DeviceHive Websocket Proxy](https://github.com/devicehive/devicehive-ws-proxy) running (relies on Kafka, 
-so should be started only when Kafka is up and running).
-* [Redis 7.0](https://redis.io/docs/getting-started/).
-* [Oracle JDK 17](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or [OpenJDK 17](http://openjdk.java.net/).
-* [Maven 3.8](http://maven.apache.org/download.cgi).
-* [DeviceHiveJava source files](https://github.com/devicehive/devicehive-java-server). This is the main part of the [DeviceHive] framework.
-
-
-Build packages
---------------
-Download source code from [GitHub](https://github.com/devicehive/devicehive-java-server) using "Download ZIP" button.
-It should always point to recent stable or beta release, but you always can get any other tag or branch.
-It also can be done using one of [Git version control client](http://git-scm.com/downloads/guis) or git command line tool.
-If you prefer git, clone project using command
-
-`git clone https://github.com/devicehive/devicehive-java-server.git`
-
-After that you can switch to the tag or branch you need. The list of all available releases can be found at
-https://github.com/devicehive/devicehive-java-server/releases.
-Execute following command from ${devicehive-java-server-directory}.
-
-`mvn clean package`
-
-If there are no errors, compilation and packaging are completed and you can go to the next step.
-
-Running Apache Kafka
------------------------
-Start Zookeeper and Apache Kafka brokers as explained at official documentation (`http://kafka.apache.org/documentation.html#quickstart`).
-If your Kafka brokers are installed on the different machines, please specify their hostname/ports at app.properties file.
-You need to update zookeeper.connect (zookeeper's contact point) and bootstrap.servers (list of brokers) properties.
-
-Running Redis
------------------------
-Start Redis is explained in official documentation (https://redis.io/docs/getting-started/). If your Redis instance is intalled
-on the different machines, please specify the host/port at `application.properties` file.
-
-Starting database
----------------------
-* After you have downloaded and installed PostgreSQL (see https://wiki.postgresql.org/wiki/Detailed_installation_guides) 
-you have to create new user. This step is required for database migrations to work properly. By default, DH expects that
-the username is `postgres` and the password is `12345`. You can change this in the DH configuration files.
-* Create database with the name `devicehive` using user that have been created at step 1. This user should be owner of 
-database.
-* Database schema will be initialized on application startup.
-
-Checking properties
----------------------
-
-Each microservice has its own `src/main/resources/application.properties` file which contains all application-level 
-configurations (db credentials, redis address, kafka props etc.). Please check them before building application in 
-order to avoid problems at runtime.
-
-You can also override these values by passing them to JVM while running `java -Dapplication.property.name=application.property.name -jar`.
-For example: 
-```
-java -Dbootstrap.servers=0.0.0.1:9092 -jar ${devicehive-jar}.jar
+<div class="Box-sc-g0xbh4-0 bJMeLZ js-snippet-clipboard-copy-unpositioned" data-hpc="true"><article class="markdown-body entry-content container-lg" itemprop="text"><p dir="auto"><a href="/devicehive/devicehive-java-server/blob/master/LICENSE"><img src="https://camo.githubusercontent.com/47d7332518ef7b0267395af541cbcab9ce3fd4d37bcfb1cec10755d691aecf58/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d417061636865253230322e302d626c75652e7376673f7374796c653d666c61742d737175617265" alt="执照" data-canonical-src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square" style="max-width: 100%;"></a></p>
+<h1 tabindex="-1" dir="auto"><a id="user-content-devicehive-java-server" class="anchor" aria-hidden="true" tabindex="-1" href="#devicehive-java-server"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DeviceHive Java 服务器</font></font></h1>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DeviceHive 将任何连接的设备变成物联网的一部分。</font><font style="vertical-align: inherit;">它提供通信层、控制软件和多平台库，以引导智能能源、家庭自动化、遥感、遥测、远程控制和监控软件等的开发。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用 Python、Node.js 或 Java 库和 JSON 格式连接嵌入式 Linux。</font><font style="vertical-align: inherit;">通过 REST、Websockets 或 MQTT 写入和读取数据，探索</font></font><a href="https://grafana.com/plugins/devicehive-devicehive-datasource/installation" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Grafana</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">图表上的可视化。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用 HTML5/JavaScript 和 Android 库开发客户端应用程序。</font><font style="vertical-align: inherit;">将沟通交给 DeviceHive，专注于实际产品和创新。</font></font></p>
+<h2 tabindex="-1" dir="auto"><a id="user-content-devicehive-license" class="anchor" aria-hidden="true" tabindex="-1" href="#devicehive-license"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DeviceHive 许可证</font></font></h2>
+<p dir="auto"><a href="http://devicehive.com" title="DeviceHive框架" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DeviceHive</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">由</font></font><a href="http://dataart.com" title="数据艺术" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DataArt</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Apps 开发，并在开源
+</font></font><a href="https://en.wikipedia.org/wiki/Apache_License" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apache 2.0</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下分发。</font><font style="vertical-align: inherit;">这基本上意味着只要包含版权声明，您就可以使用该软件做任何您想做的事情。</font><font style="vertical-align: inherit;">这也意味着您不必将最终产品或修改后的源代码贡献回开源，但如果您想分享，我们强烈鼓励您这样做！</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© 版权所有 2013-2017 DataArt Apps © 保留所有权利</font></font></p>
+<h1 tabindex="-1" dir="auto"><a id="user-content-docker-container" class="anchor" aria-hidden="true" tabindex="-1" href="#docker-container"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Docker容器</font></font></h1>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DeviceHive 可以通过 Docker Compose 手动部署或部署到 Kubernetes 集群。</font></font><a href="https://docs.docker.com/compose/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们的建议是从Docker Compose</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">开始</font><font style="vertical-align: inherit;">——这是开始掌握 DeviceHive 功能的最简单方法。</font></font><a href="https://github.com/devicehive/devicehive-docker/tree/master/rdbms-image"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以在这里</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">找到说明</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果您更熟悉</font></font><a href="https://kubernetes.io/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kubernetes</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请点击此
+</font></font><a href="https://github.com/devicehive/devicehive-docker/tree/master/k8s"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">链接</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">获取详细说明。</font></font></p>
+<h1 tabindex="-1" dir="auto"><a id="user-content-devicehive-java-installation-instructions" class="anchor" aria-hidden="true" tabindex="-1" href="#devicehive-java-installation-instructions"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DeviceHive Java 安装说明</font></font></h1>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">尽管 docker-compose 安装是本地运行 DeviceHive 对开发人员最友好的方式，但有时需要手动构建和启动项目。</font><font style="vertical-align: inherit;">您可以在下面找到相关的详细说明。</font></font></p>
+<h2 tabindex="-1" dir="auto"><a id="user-content-prerequisites" class="anchor" aria-hidden="true" tabindex="-1" href="#prerequisites"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">先决条件</font></font></h2>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为了使用 DeviceHive 框架，您必须安装并配置以下组件：</font></font></p>
+<ul dir="auto">
+<li><a href="http://www.postgresql.org/download/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PostgreSQL 14</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或更高版本。</font></font></li>
+<li><a href="http://kafka.apache.org/downloads.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apache Kafka 3.1</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或更高版本。</font></font></li>
+<li><a href="https://github.com/devicehive/devicehive-ws-proxy"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DeviceHive Websocket 代理</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">正在运行（依赖于 Kafka，因此仅应在 Kafka 启动并运行时启动）。</font></font></li>
+<li><a href="https://redis.io/docs/getting-started/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">雷迪斯7.0</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></li>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oracle JDK 17</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或</font></font><a href="http://openjdk.java.net/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenJDK 17</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></li>
+<li><a href="http://maven.apache.org/download.cgi" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Maven 3.8</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></li>
+<li><a href="https://github.com/devicehive/devicehive-java-server"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DeviceHiveJava 源文件</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><a href="http://devicehive.com" title="DeviceHive框架" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">这是DeviceHive</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">框架的主要部分</font><font style="vertical-align: inherit;">。</font></font></li>
+</ul>
+<h2 tabindex="-1" dir="auto"><a id="user-content-build-packages" class="anchor" aria-hidden="true" tabindex="-1" href="#build-packages"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">构建包</font></font></h2>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用“下载 ZIP”按钮从</font></font><a href="https://github.com/devicehive/devicehive-java-server"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GitHub</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下载源代码。</font><font style="vertical-align: inherit;">它应该始终指向最近的稳定版或测试版，但您始终可以获得任何其他标签或分支。</font></font><a href="http://git-scm.com/downloads/guis" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">它还可以使用Git 版本控制客户端</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或 git 命令行工具</font><font style="vertical-align: inherit;">之一来完成。</font><font style="vertical-align: inherit;">如果您更喜欢 git，请使用命令克隆项目</font></font></p>
+<p dir="auto"><code>git clone https://github.com/devicehive/devicehive-java-server.git</code></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">之后您可以切换到您需要的标签或分支。</font><font style="vertical-align: inherit;">所有可用版本的列表可以在
+</font></font><a href="https://github.com/devicehive/devicehive-java-server/releases"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://github.com/devicehive/devicehive-java-server/releases</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">找到。</font><font style="vertical-align: inherit;">从 ${devicehive-java-server-directory} 执行以下命令。</font></font></p>
+<p dir="auto"><code>mvn clean package</code></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果没有错误，则编译打包完成，可以进行下一步。</font></font></p>
+<h2 tabindex="-1" dir="auto"><a id="user-content-running-apache-kafka" class="anchor" aria-hidden="true" tabindex="-1" href="#running-apache-kafka"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">运行阿帕奇卡夫卡</font></font></h2>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">按照官方文档 ( </font></font><code>http://kafka.apache.org/documentation.html#quickstart</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) 中的说明启动 Zookeeper 和 Apache Kafka 代理。</font><font style="vertical-align: inherit;">如果您的 Kafka 代理安装在不同的计算机上，请在 app.properties 文件中指定它们的主机名/端口。</font><font style="vertical-align: inherit;">您需要更新zookeeper.connect（zookeeper的联系点）和bootstrap.servers（代理列表）属性。</font></font></p>
+<h2 tabindex="-1" dir="auto"><a id="user-content-running-redis" class="anchor" aria-hidden="true" tabindex="-1" href="#running-redis"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">运行Redis</font></font></h2>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">启动Redis在官方文档中有解释（</font></font><a href="https://redis.io/docs/getting-started/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://redis.io/docs/getting-started/</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）。</font><font style="vertical-align: inherit;">如果您的 Redis 实例安装在不同的计算机上，请在</font></font><code>application.properties</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件中指定主机/端口。</font></font></p>
+<h2 tabindex="-1" dir="auto"><a id="user-content-starting-database" class="anchor" aria-hidden="true" tabindex="-1" href="#starting-database"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">启动数据库</font></font></h2>
+<ul dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下载并安装 PostgreSQL 后（请参阅</font></font><a href="https://wiki.postgresql.org/wiki/Detailed_installation_guides" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://wiki.postgresql.org/wiki/Detailed_installation_guides</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">），您必须创建新用户。</font><font style="vertical-align: inherit;">为了使数据库迁移正常工作，需要执行此步骤。</font><font style="vertical-align: inherit;">默认情况下，DH 期望用户名是</font></font><code>postgres</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，密码是</font></font><code>12345</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">您可以在 DH 配置文件中更改此设置。</font></font></li>
+<li><font style="vertical-align: inherit;"></font><code>devicehive</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用在步骤 1 中创建的用户</font><font style="vertical-align: inherit;">名称创建数据库。该用户应该是数据库的所有者。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">数据库架构将在应用程序启动时初始化。</font></font></li>
+</ul>
+<h2 tabindex="-1" dir="auto"><a id="user-content-checking-properties" class="anchor" aria-hidden="true" tabindex="-1" href="#checking-properties"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">检查属性</font></font></h2>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">每个微服务都有自己的</font></font><code>src/main/resources/application.properties</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件，其中包含所有应用程序级配置（数据库凭据、redis 地址、kafka props 等）。</font><font style="vertical-align: inherit;">请在构建应用程序之前检查它们，以避免运行时出现问题。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您还可以通过在运行时将它们传递给 JVM 来覆盖这些值</font></font><code>java -Dapplication.property.name=application.property.name -jar</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">例如：</font></font></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>java -Dbootstrap.servers=0.0.0.1:9092 -jar ${devicehive-jar}.jar
 java -Dproxy.connect=0.0.0.1:3000 -jar ${devicehive-jar}.jar
-```
-
-DB connection properties are managed inside `devicehive-rdbms-dao/src/main/resources/application-persistence.properties`.
-To override them do the same:
-```
-java -Dspring.datasource.url=jdbc:postgresql://0.0.0.1:5432/devicehive -jar ${devicehive-jar}.jar
+</code></pre><div class="zeroclipboard-container">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 tooltipped-no-delay d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w" value="java -Dbootstrap.servers=0.0.0.1:9092 -jar ${devicehive-jar}.jar
+java -Dproxy.connect=0.0.0.1:3000 -jar ${devicehive-jar}.jar" tabindex="0" role="button">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DB 连接属性在内部管理</font></font><code>devicehive-rdbms-dao/src/main/resources/application-persistence.properties</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要覆盖它们，请执行相同的操作：</font></font></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>java -Dspring.datasource.url=jdbc:postgresql://0.0.0.1:5432/devicehive -jar ${devicehive-jar}.jar
 java -Dspring.datasource.username=test -Dspring.datasource.password=test -jar ${devicehive-jar}.jar
-```
-
-Running application
----------------------
-DeviceHive ecosystem contains of 3 mandatory and 1 optional services, namely Backend, Frontend, Auth and Plugin 
-management (optional) micro services.
-
-* To start application, first run following command:
-
-`java -jar ${devicehive-java-server-directory}/devicehive-backend/target/devicehive-backend-<version>-boot.jar`
- 
-This will start Backend. Wait for the application to start, then run: 
-
-`java -jar ${devicehive-java-server-directory}/devicehive-frontend/target/devicehive-frontend-<version>-boot.jar`
-
-and 
-
-`java -jar ${devicehive-java-server-directory}/devicehive-auth/target/devicehive-auth-<version>-boot.jar`
-
-This will start embedded undertow application server on default port 8080 and deploy DeviceHive application.
-You can visit `http://localhost:8080/dh/swagger` from your web browser to start learning the frontend's APIs.
-Also you can visit `http://localhost:8090/dh/swagger` from your web browser to start learning the auth's APIs.
-
-For devicehive-frontend and devicehive-backend logging level can be changed by adding the following properties to the command above:
-
-`-Droot.log.level=value1 -Dcom.devicehive.log.level=value2`
-
-The values can be: TRACE, DEBUG, INFO, WARN, ERROR. If the properties are absent the default values will be used.
-For devicehive-frontend and devicehive-auth default values for value1 and value2 are WARN and INFO correspondingly.
-For devicehive-backend the default value for both is INFO.
-
-Plugin management service
----------------------
-
-There's one optional service inside DeviceHive ecosystem - Plugin Management service. It allows to register and to update 
-DeviceHive plugins (that allow customers to implement their own business logic without diving into DeviceHive source code)
-via RESTful API.
-
-To start it simply run following command:
-
-`java -jar ${devicehive-java-server-directory}/devicehive-plugin/target/devicehive-plugin-<version>-boot.jar`
-
-Service will be started on 8110 port by default, so you can visit its swagger at `http://localhost:8110/dh/swagger`
+</code></pre><div class="zeroclipboard-container">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 tooltipped-no-delay d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w" value="java -Dspring.datasource.url=jdbc:postgresql://0.0.0.1:5432/devicehive -jar ${devicehive-jar}.jar
+java -Dspring.datasource.username=test -Dspring.datasource.password=test -jar ${devicehive-jar}.jar" tabindex="0" role="button">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<h2 tabindex="-1" dir="auto"><a id="user-content-running-application" class="anchor" aria-hidden="true" tabindex="-1" href="#running-application"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">运行应用程序</font></font></h2>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DeviceHive生态系统包含3个强制服务和1个可选服务，即后端、前端、身份验证和插件管理（可选）微服务。</font></font></p>
+<ul dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要启动应用程序，首先运行以下命令：</font></font></li>
+</ul>
+<p dir="auto"><code>java -jar ${devicehive-java-server-directory}/devicehive-backend/target/devicehive-backend-&lt;version&gt;-boot.jar</code></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">这将启动后端。</font><font style="vertical-align: inherit;">等待应用程序启动，然后运行：</font></font></p>
+<p dir="auto"><code>java -jar ${devicehive-java-server-directory}/devicehive-frontend/target/devicehive-frontend-&lt;version&gt;-boot.jar</code></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font></p>
+<p dir="auto"><code>java -jar ${devicehive-java-server-directory}/devicehive-auth/target/devicehive-auth-&lt;version&gt;-boot.jar</code></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">这将在默认端口 8080 上启动嵌入式 undertow 应用程序服务器并部署 DeviceHive 应用程序。</font><font style="vertical-align: inherit;">您可以</font></font><code>http://localhost:8080/dh/swagger</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">从网络浏览器访问并开始学习前端的 API。</font><font style="vertical-align: inherit;">您也可以从网络浏览器访问</font></font><code>http://localhost:8090/dh/swagger</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以开始学习身份验证的 API。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对于 devicehive-frontend 和 devicehive-backend 日志记录级别，可以通过将以下属性添加到上面的命令来更改：</font></font></p>
+<p dir="auto"><code>-Droot.log.level=value1 -Dcom.devicehive.log.level=value2</code></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">这些值可以是：TRACE、DEBUG、INFO、WARN、ERROR。</font><font style="vertical-align: inherit;">如果属性不存在，则将使用默认值。</font><font style="vertical-align: inherit;">对于 devicehive-frontend 和 devicehive-auth，value1 和 value2 的默认值分别是 WARN 和 INFO。</font><font style="vertical-align: inherit;">对于 devicehive-backend，两者的默认值都是 INFO。</font></font></p>
+<h2 tabindex="-1" dir="auto"><a id="user-content-plugin-management-service" class="anchor" aria-hidden="true" tabindex="-1" href="#plugin-management-service"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">插件管理服务</font></font></h2>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DeviceHive 生态系统中有一项可选服务 - 插件管理服务。</font><font style="vertical-align: inherit;">它允许通过 RESTful API 注册和更新 DeviceHive 插件（允许客户实现自己的业务逻辑，而无需深入研究 DeviceHive 源代码）。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要启动它，只需运行以下命令：</font></font></p>
+<p dir="auto"><code>java -jar ${devicehive-java-server-directory}/devicehive-plugin/target/devicehive-plugin-&lt;version&gt;-boot.jar</code></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务默认在8110端口启动，因此你可以访问它的swagger</font></font><code>http://localhost:8110/dh/swagger</code></p>
+</article></div>
